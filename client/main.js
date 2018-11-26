@@ -12,12 +12,12 @@ import Login from './../imports/ui/Login';
 
 const onEnterPublicPage = () => {
   if (Meteor.userId()) {
-    browserHistory.push('/links');
+    browserHistory.replace('/links');
   }
 }
 const onEnterPrivatePage = () => {
   if (!Meteor.userId()) {
-    browserHistory.push('/');
+    browserHistory.replace('/');
   }
 }
 const routes = (
@@ -42,10 +42,10 @@ Tracker.autorun( () => {
   const isUnauthenticatedPage = unAuthenticatedPages.includes(pathName);
   const isAthenticatedPage = authenticatedPages.includes(pathName);
   if (isUnauthenticatedPage && isAuthenticated) {
-    browserHistory.push('/links');
+    browserHistory.replace('/links');
   }
   else if (authenticatedPages && !isAuthenticated) {
-    browserHistory.push('/');
+    browserHistory.replace('/');
   }
 });
 
