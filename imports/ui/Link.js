@@ -7,6 +7,7 @@ export default class Link extends React.Component {
     console.log('logout');
     Accounts.logout();
     //browserHistory.push('/');
+    
   }
   render() {
     return (
