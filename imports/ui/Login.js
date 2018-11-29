@@ -37,7 +37,7 @@ export default class Login extends React.Component {
         <div>
           <h1>Login to Short-lnk</h1>
           {this.state.error ? <p>{this.state.error}</p>:undefined}
-          <form onSubmit={this.handleSubmit.bind(this)}>
+          <form onSubmit={this.handleSubmit.bind(this)} noValidate>
             <input type='text' ref='email' placeholder='foo.bar@gmail.com'/>
             <input type='password' ref='password' placeholder='your password'/>
             <button>Login</button>
