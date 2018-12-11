@@ -10,3 +10,17 @@ if (Meteor.isServer) {
     return Links.find({userId}); // Return a Cursor
   })
 }
+
+// Naming convention collectionNAme.action
+Meteor.methods({
+  'links.insert'(url) {
+    if ( !this.userId) {
+      throw new Meteor.Error('not-authorized', 'Not logged-in')
+    }
+    Links.insert({
+      url,
+      userId: this.userId
+    });
+  }
+
+})
