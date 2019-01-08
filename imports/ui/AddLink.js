@@ -16,7 +16,7 @@ export default class AddLink extends React.Component {
   render() {
     return (
       <div>
-        <p>Add Link</p>
+        <h2>Add Link</h2>
         <form onSubmit={this.onSubmit.bind(this)}>
           <input type="text" ref="url" placeholder="url"/>
           <button>Add Link</button>
