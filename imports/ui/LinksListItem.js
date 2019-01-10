@@ -11,6 +11,7 @@ export default class LinksListItem extends React.Component {
     }
   }
   componentDidMount() {
+    console.log('LinksLitsItem did mount',this.props.url);
     this.clipBoard = new ClipBoard(this.refs.copy);
 
     this.clipBoard.on('success', () => {
@@ -24,7 +25,11 @@ export default class LinksListItem extends React.Component {
   }
 
   componentWillUnmount() {
-    this.clipboard.destroy(); // Clean callbacks
+    console.log('LinksLitsItem will Unmount',this.props.url);
+    if (this.clipboard) {
+      this.clipboard.destroy(); // Clean callbacks
+    }
+    console.log('LinksLitsItem UnmountED', this.props.url);
   }
 
   render() {
