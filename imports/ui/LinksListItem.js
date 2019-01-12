@@ -38,6 +38,7 @@ export default class LinksListItem extends React.Component {
         <p>{this.props.url}</p>
         <p>{this.props.shortUrl}</p>
         <p>{this.props.visible?'Visible':'Hidden'}</p>
+        <p>{this.props.visitedCount} - {this.props.lastVisitedAt}</p>
         <button ref='copy' data-clipboard-text={this.props.shortUrl}>{this.state.justCopied?'Copied':'Copy'}</button>
         <button onClick={() => { Meteor.call('links.setVisibility', this.props._id, !this.props.visible) } }>
           {this.props.visible?'Hide':'UnHide'}
@@ -52,5 +53,7 @@ LinksListItem.propTypes = {
   url: PropTypes.string.isRequired,
   userId: PropTypes.string.isRequired,
   shortUrl: PropTypes.string.isRequired,
-  visible: PropTypes.bool.isRequired
+  visible: PropTypes.bool.isRequired,
+  visitedCount: PropTypes.number.isRequired,
+  lastVisitedAt: PropTypes.number
 }

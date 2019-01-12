@@ -16,6 +16,7 @@ WebApp.connectHandlers.use((req,res,next) => {
   if (link) {
     // If there's a mathc, redirect to the url of the found link
     console.log('Redirect id:'+_id+' to url:'+link);
+    Meteor.call('links.trackVisit', _id);
     res.statusCode = 302; // Redirect
     res.setHeader('Location',link.url);
     res.end();
