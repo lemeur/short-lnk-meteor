@@ -9,7 +9,6 @@ import '../imports/startup/simple-schema-configuration.js';
 
 Meteor.startup(() => {
 
-
 WebApp.connectHandlers.use((req,res,next) => {
   const _id = req.url.slice(1); // Strip leading / in URL
   const link = Links.findOne({_id})

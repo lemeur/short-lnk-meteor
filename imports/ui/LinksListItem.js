@@ -2,6 +2,8 @@ import {Meteor} from 'meteor/meteor';
 import React from 'react';
 import PropTypes from 'prop-types';
 import ClipBoard from 'clipboard';
+import moment from 'moment';
+
 
 export default class LinksListItem extends React.Component {
   constructor (props) {
@@ -31,14 +33,25 @@ export default class LinksListItem extends React.Component {
     }
     console.log('LinksLitsItem UnmountED', this.props.url);
   }
-
+  renderStats() {
+    const visitMessage = this.props.visitedCount > 1? 'visits': 'visit';
+    let visitedMessage = null;
+    // this.props.lastVisitedAt
+    const momentFromNow = moment(this.props.lastVisitedAt).fromNow()
+    if (typeof this.props.lastVisitedAt === 'number') {
+      visitedMessage = `(visited ${momentFromNow})`;
+    }
+    return (
+      <p>{this.props.visitedCount} {visitMessage} - {visitedMessage}</p>
+    );
+  }
   render() {
     return (
       <div>
         <p>{this.props.url}</p>
         <p>{this.props.shortUrl}</p>
         <p>{this.props.visible?'Visible':'Hidden'}</p>
-        <p>{this.props.visitedCount} - {this.props.lastVisitedAt}</p>
+        {this.renderStats()}
         <button ref='copy' data-clipboard-text={this.props.shortUrl}>{this.state.justCopied?'Copied':'Copy'}</button>
         <button onClick={() => { Meteor.call('links.setVisibility', this.props._id, !this.props.visible) } }>
           {this.props.visible?'Hide':'UnHide'}
