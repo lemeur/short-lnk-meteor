@@ -20,6 +20,10 @@
   background-color: transparent;
   border: 1px solid $button--pill-color;
   color: $button--pill-color;
+  margin-top: 0;
+  margin-right: ($space / 2);
+  margin-bottom: 0;
+  margin-left: 0;
   padding: .3rem .8rem;
 }
 

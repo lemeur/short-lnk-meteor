@@ -30,19 +30,27 @@ export default class LinksList extends React.Component {
     this.linksTracker.stop(); // Stopping the Tracker to save CPU
   }
   renderLinksListItems () {
-    return this.state.links.map( (link) => {
-      //return <p key={link._id}>{link.url}</p>;
-      const shortUrl = Meteor.absoluteUrl(link._id)
-      // On peut utiliser le spread operator ... pour expand les attributs de l'objet dans du JSX
-      return <LinksListItem key={link._id} shortUrl={shortUrl} {...link} />
-    });
+    if (this.state.links.length === 0) {
+      return (
+        <div className="item">
+          <p className="item__status-message">No links found</p>
+        </div>
+      );
+    } else {
+      return this.state.links.map( (link) => {
+        const shortUrl = Meteor.absoluteUrl(link._id)
+        // On peut utiliser le spread operator ... pour expand les attributs de l'objet dans du JSX
+        return <LinksListItem key={link._id} shortUrl={shortUrl} {...link} />
+      });
+    }
   }
   render() {
     return (
+      <div>
         <div>
-          <p>Links List</p>
           {this.renderLinksListItems()}
         </div>
+      </div>
     );
   }
 
