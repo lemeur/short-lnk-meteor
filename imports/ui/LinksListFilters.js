@@ -20,8 +20,9 @@ export default class LinksListFilters extends React.Component {
   render() {
     return (
       <div>
-        <label>
+        <label className="checkbox">
           <input  type="checkbox"
+                  className="checkbox__box"
                   checked={!this.state.showVisible}
                   onChange={(e) => {
                     Session.set('showVisible', !e.target.checked);
