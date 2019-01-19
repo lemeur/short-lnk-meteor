@@ -28,3 +28,12 @@
   border: 1px solid $button-secondary-border-color;
   color: $button-secondary-color;
 }
+
+.button--link-text {
+  // styling a button like a link
+  background: none;
+  margin: 0;
+  padding:0;
+  text-decoration: underline;
+  text-transform: none; // reset the uppercase transform on button
+}
